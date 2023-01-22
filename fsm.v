@@ -59,18 +59,18 @@ module fsm
 	  end
 	  TIMEOUT: begin
 		if(ready)
-		   next_state = TIMEOUT;
-		else next_state = IDLE;
+		   next_state = LINE;
+		else next_state = TIMEOUT;
 	  end  
 	  LINE: begin
 		if(line_end)
-		   next_state = TIMEOUT;
-		else next_state = IDLE;
+		   next_state = GEAR;
+		else next_state = LINE;
 	  end
 	  GEAR: begin
 		if(gear_end)
-		   next_state = TIMEOUT;
-		else next_state = IDLE;
+		   next_state = IDLE;
+		else next_state = GEAR;
 	  end
 	  default: next_state = IDLE;
 	 endcase
